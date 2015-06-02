@@ -92,18 +92,18 @@ You can apply an equality filter on hashes like that:
 * `{example_field: {foo: 'bar', bar: 'foo'}}`
 
 
-### Limit (soon)
-~~A limit param defines the number of returned resources. For instance:~~
+### Limit
+A limit param defines the number of returned resources. For instance:
 * `{limit: 10}`
 
-~~However I would strongly advice you to use a pagination gem like Kaminari, and use `page` and `per_page` params.~~
+However I would strongly advice you to use a pagination gem like Kaminari, and use `page` and `per_page` params.
 
 
-### Sorting (soon)
-~~You can apply sorting using the `property` and `order` attributes. For instance:~~
-* `{property: 'created_at', order: 'desc'}`
+### Sorting
+You can apply sorting using the `property` and `order` attributes. For instance:
+* `{created_at: 'desc'}`
 
-~~If there is no column named after the property value, sorting is skipped.~~
+If there is no column named after the property value, sorting is skipped.
 
 
 ### Associations (later)
@@ -111,11 +111,11 @@ You can apply an equality filter on hashes like that:
 * `{email: test@user.com, microposts: {created_at { leq: 12-9-2014} }`
 
 
-### Scopes (later)
-~~If you want to filter based on a scope in a model, the scope names should go under `scopes` sub-hash. For instance the following:~~
+### Scopes
+If you want to filter based on a scope in a model, the scope names should go under `scopes` sub-hash. For instance the following:
 * `{ scopes: { planned: true } }`
 
-~~will run the `.planned` scope on the resource.~~
+will run the `.planned` scope on the resource.
 
 
 ### Whitelisting
