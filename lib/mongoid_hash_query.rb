@@ -1,5 +1,8 @@
 require 'mongoid_hash_query/version'
 require 'mongoid_hash_query/field_filters'
+require 'mongoid_hash_query/limit_filters'
+require 'mongoid_hash_query/sort_filters'
+require 'mongoid_hash_query/scope_filters'
 require 'mongoid_hash_query/filter_applier'
 
 module MongoidHashQuery
