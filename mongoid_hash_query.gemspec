@@ -9,10 +9,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Filippos Vasilakis"]
   spec.email         = ["vasilakisfil@gmail.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
   spec.summary       = %q{Simple gem that allows you to run any Mongoid query using a hash API. Perfect for RESTful APIs}
   spec.description   = %q{Simple gem that allows you to run any Mongoid query using a hash API. Perfect for RESTful APIs}
   spec.homepage      = "https://github.com/kollegorna/mongoid_hash_query"
