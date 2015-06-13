@@ -19,6 +19,8 @@ on unknown attributes (attributes not returned from the API) by brute forcing
 which might or might not be a security issue. If you don't like that check
 [whitelisting](https://github.com/kollegorna/mongoid_hash_query#whitelisting)._
 
+*New*! You can now do [__aggregation queries__](#aggregation-queries).
+
 ## Installation
 
 Add this line to your application's Gemfile:
