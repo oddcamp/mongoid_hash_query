@@ -1,9 +1,12 @@
 require 'mongoid_hash_query/version'
+require 'mongoid_hash_query/helpers'
 require 'mongoid_hash_query/field_filters'
 require 'mongoid_hash_query/limit_filters'
 require 'mongoid_hash_query/sort_filters'
 require 'mongoid_hash_query/scope_filters'
 require 'mongoid_hash_query/filter_applier'
+
+require 'mongoid_hash_query/aggregation'
 
 module MongoidHashQuery
   class << self
@@ -28,6 +31,10 @@ module MongoidHashQuery
       include_associations: include_associations,
       model: model
     ).apply_filters
+  end
+
+  def aggregations(resource, params)
+    Aggregation.new(resource, params).apply
   end
 
   class Configuration
