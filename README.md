@@ -91,6 +91,9 @@ Soon you will be able to send in regex..
 You can apply an equality filter on hashes like that:
 * `{example_field: {foo: 'bar', bar: 'foo'}}`
 
+Or you can apply a regex in example_field.foo like that:
+* `{example_field: {foo: {regex: true, value: 'bar', ignore_case: true}, bar: 'foo'}}`
+
 
 ### Limit
 A limit param defines the number of returned resources. For instance:

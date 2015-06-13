@@ -29,7 +29,11 @@ module MongoidHashQuery::FieldFilters
 
   def filter_hash(resource, field, param)
     param.each do |k, v|
-      resource = resource.where("#{field}.#{k}" => v)
+      if v.is_a?(Hash) && v[:regex]
+        resource = resource.where("#{field}.#{k}" => Regexp.new(v[:value], v[:ignore_case]))
+      else
+        resource = resource.where("#{field}.#{k}" => v)
+      end
     end
 
     return resource
