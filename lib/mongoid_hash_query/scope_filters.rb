@@ -9,4 +9,3 @@ module MongoidHashQuery::ScopeFilters
     return resource
   end
 end
-

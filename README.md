@@ -143,6 +143,31 @@ end
 `Api::V1::ResourceFilter.new(resource, params[resource]).apply_filters` will be
 called to apply the filters in resource association.~~
 
+## Aggregation Queries
+Sometimes we need to ask the database queries that act on the collection but don't want back an array of elements but a value instead! Now you can do that by simply calling the aggregations method inside the controller:
+
+```ruby
+aggregations(resource, {
+  aggregate: {
+    integer_column: { avg: true, max: true, min: true, sum: true },
+    float_column: {avg: true, max: true, min: true },
+    datetime_column: { max: true, min: true }
+  }
+})
+```
+
+and you will get a hash (HashWithIndifferentAccess) back that holds all your aggregations like:
+```ruby
+{
+  aggregations: {
+    "float_column"=>{"avg"=>25.5, "max"=>50, "min"=>1},
+    "integer_column"=>{"avg"=>4.38, "sum"=>219, "max"=>9, "min"=>0},
+    "datetime_at"=>{"max"=>2015-06-11 20:59:14 UTC, "min"=>2015-06-11 20:59:12 UTC}
+  }
+}
+```
+
+These attributes usually go to the "meta" section of your serializer. In that way it's easy to parse them in the front-end (for ember check [here](http://guides.emberjs.com/v1.10.0/models/handling-metadata/)). Please note that you should apply the aggregations __after__ you apply the filters (if there any) but __before__ you apply pagination!
 
 
 ## Contributing

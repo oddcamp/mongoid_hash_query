@@ -1,5 +1,6 @@
 module MongoidHashQuery
   class FilterApplier
+    include Helpers
     include FieldFilters
     #include AssociationFilters
     include ScopeFilters
@@ -66,11 +67,5 @@ module MongoidHashQuery
       return @resource
     end
 
-    def filter_class(resource_name)
-    end
-
-    def model_class_name(resource)
-      resource.klass
-    end
   end
 end
