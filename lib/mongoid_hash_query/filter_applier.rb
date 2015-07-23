@@ -53,6 +53,8 @@ module MongoidHashQuery
           @resource = filter_symbol(@resource, v.name, @params[v.name])
         when Time.to_s
           @resource = filter_time(@resource, v.name, @params[v.name])
+        else
+          @resource = @resource.where(v.name => @params[v.name])
         end
       end
 
