@@ -20,20 +20,28 @@ module MongoidHashQuery
         meta_attributes = HashWithIndifferentAccess.new
 
         params[:aggregate].each do |field, asked_aggrs|
-          next if @model.fields[field].nil?
+          #next if @model.fields[field].nil? #allow on embedded documents too
           next unless params[:aggregate][field].is_a? Hash
 
-          case @model.fields[field].options[:type].to_s.downcase.to_sym
-          when :integer, :float, :bigdecimal
+          if @model.fields[field]
+            case @model.fields[field].options[:type].to_s.downcase.to_sym
+            when :integer, :float, :bigdecimal
+              meta_attributes[field] = apply_aggregations(
+                {avg: :avg, sum: :sum, max: :max, min: :min},
+                params[:aggregate][field],
+                field
+              )
+
+            when :date, :datetime, :time, :timewithzone,
+              meta_attributes[field] = apply_aggregations(
+                {max: :max, min: :min},
+                params[:aggregate][field],
+                field
+              )
+            end
+          else
             meta_attributes[field] = apply_aggregations(
               {avg: :avg, sum: :sum, max: :max, min: :min},
-              params[:aggregate][field],
-              field
-            )
-
-          when :date, :datetime, :time, :timewithzone,
-            meta_attributes[field] = apply_aggregations(
-              {max: :max, min: :min},
               params[:aggregate][field],
               field
             )
