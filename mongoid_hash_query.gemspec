@@ -6,8 +6,8 @@ require 'mongoid_hash_query/version'
 Gem::Specification.new do |spec|
   spec.name          = "mongoid_hash_query"
   spec.version       = MongoidHashQuery::VERSION
-  spec.authors       = ["Filippos Vasilakis"]
-  spec.email         = ["vasilakisfil@gmail.com"]
+  spec.authors       = ["Filippos Vasilakis", "Kollegorna"]
+  spec.email         = ["vasilakisfil@gmail.com", "admin@kollegorna.se"]
 
   spec.summary       = %q{Simple gem that allows you to run any Mongoid query using a hash API. Perfect for RESTful APIs}
   spec.description   = %q{Simple gem that allows you to run any Mongoid query using a hash API. Perfect for RESTful APIs}
